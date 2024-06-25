@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8qskii0jjgfy"]
+
+[ext_resource type="Texture2D" uid="uid://d22pe61iohgvp" path="res://assets/sprites/frogsprite.png" id="1_2ux4n"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_k5b8p"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5n7p"]
+atlas = ExtResource("1_2ux4n")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ke0hm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5n7p")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4nbcw"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_k5b8p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ke0hm")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_4nbcw")
